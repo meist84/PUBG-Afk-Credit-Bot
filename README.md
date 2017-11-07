@@ -1,2 +1,2 @@
 # PUBG-Afk-Farm-Bot
-update later
+This program will loop always. Im testing...
