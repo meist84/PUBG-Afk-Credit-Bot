@@ -3,6 +3,6 @@ This program will loop always. Im testing...
 
 
 # To Do:
--Make the bot work\n
--Add reolutions\n
+-Make the bot work
+-Add reolutions
 -Auto Debug+ Self fixing
