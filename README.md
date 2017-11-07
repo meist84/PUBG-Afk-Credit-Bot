@@ -1,5 +1,5 @@
 # PUBG-Afk-Farm-Bot
-This program will loop always. I'm testing...
+This program will loop always. I'm testing... To end it close the program or move your mouse to the top left of the screen!
 Updating daily! 
 
 
