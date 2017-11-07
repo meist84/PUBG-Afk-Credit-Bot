@@ -1,2 +1,0 @@
-The script as this stage will always loop its for testing!
-test
