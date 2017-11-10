@@ -23,3 +23,6 @@ I plan to keep updating the bot with new functions like:
 * Make the bot work
 * Add more resolutions
 * Auto Debug+ Self fixing
+## Pull requests
+
+Are welcome, if you have something interesting to add then go ahead and ill add it to the code/bot(after testing).
