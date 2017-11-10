@@ -3,6 +3,8 @@ To end it close the program or move your mouse to the top left of the screen!
 
 Updating daily! It will work by the end of the day
 
+The bot works in fullscreen windowed mode and fullscreen mode.
+
 ## Troubleshooting and debugging 
 
 The bot will auto debug and self fix.
