@@ -2,11 +2,15 @@
 
 Bot for Playerunknown Battlegrounds that AFK farms battlepoints
 
-To end or close the program without doing it manually move your mouse to the top left of the screen.
+If you cant manually close the bot move your mouse to the TOP left of the screen and wait.
 
 Updating daily! It will work by the end of the day
 
 The bot works in fullscreen windowed mode and fullscreen mode.
+
+# Working status
+
+Version.1.00+
 
 If you see someone repacking it elsewhere it probably isnt safe.
 
