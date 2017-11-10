@@ -32,6 +32,7 @@ I plan to keep updating the bot with new functions:
 Functions I have implemented:
 
 * Auto Debug+ Self fixing
+* Resolution added 1080p
 ## Pull requests
 
 You Are welcome, if you have something interesting to add then go ahead and ill add it after approving it.
