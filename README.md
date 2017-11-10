@@ -18,7 +18,7 @@ If it keeps debugging and cant self fix make sure you have done the following:
 * Making sure the game is NOT running in windowed mode BUT it will work in fullscreen windowed.
 
 None of the above works, can you please report what happened to Dustyroo? Take screenshots if you can.
-Need anymore assistance add me on Discord @Dustyroo#4303 and ping me.
+Need anymore assistance add me on Discord @Dustyroo#4303 and PM me.
 
 ## Check List
 
