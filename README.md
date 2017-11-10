@@ -11,7 +11,7 @@ If you see someone repacking it elsewhere it probably isnt safe.
 
 The bot will auto debug and self fix.
 
-If it keeps debugging and cant self fix make sure you do the following:
+If it keeps debugging and cant self fix make sure you have done the following:
 
 * Making sure reshade or any other color changers is turned off
 * Making sure your screen and game resolution matches the resolution you selected
