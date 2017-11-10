@@ -10,6 +10,7 @@ The bot will auto debug and self fix.
 If it keeps debugging and cant self fix make sure you do the following:
 
 * Making sure reshade or any other color changers is turned off
+* Making sure your screen and game resolution matches the resolution you selected
 * Making sure the game is NOT running in windowed mode. - make sure to tell that what it will work in-
 
 ## To Do
