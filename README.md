@@ -25,4 +25,4 @@ I plan to keep updating the bot with new functions like:
 * Auto Debug+ Self fixing
 ## Pull requests
 
-Are welcome, if you have something interesting to add then go ahead and ill add it to the code/bot(after testing).
+You Are welcome, if you have something interesting to add then go ahead and ill add it after aprovingit.
