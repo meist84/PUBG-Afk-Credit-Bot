@@ -6,6 +6,8 @@ import pyautogui
 
 debug_me = 0
 clear = lambda: os.system('cls')
+wait_for_drop = int
+leave_game = int
 
 def short_count_down():
     for i in range(1, 6) [::-1]:
@@ -18,7 +20,8 @@ def Stop_Bot():
     Stop_Bot()
 def parachute_max_distance():
     print('now we have to press w alot faggot')
-    for i in range(1,200):
+    for i in range(1, 150):
+        print('You pressed W this many times:'+str(i)+'')
         pyautogui.keyDown('w') 
         time.sleep(0.5)
         pyautogui.keyUp('w')
@@ -26,17 +29,20 @@ def parachute_max_distance():
     Stop_Bot()
 
 def playing_game_check():
+    global wait_for_drop
+    global leave_game
     print('game started!')
+    leave_game = 265 - wait_for_drop
     for i in range(1, 1000):
         print('Check to see if over water yet! '+str(i)+'')
         if pyautogui.pixelMatchesColor(1805, 889, (25, 61, 82), tolerance=20) is True:
-            wait_to_drop = random.randint(1, 30)
+            wait_to_drop = random.randint(1, 32)
             print('you are flying over water')
-            time.sleep(25)
+            time.sleep(23)
             print('dont sleeping?')
             time.sleep(wait_to_drop)
             pyautogui.press('f')
-            time.sleep(1)
+            time.sleep(9)
             pyautogui.press('f')
             print('F was hit')
             parachute_max_distance()
@@ -98,7 +104,7 @@ def start_game_check():
         print('wow it worked!')
         time.sleep(1)
         in_game_check()
-    else:  
+    else:
         time.sleep(1)
         print('WTF IS GOING ON!')
         debug_me = 1
@@ -147,27 +153,27 @@ def fallback_debug_self_fix():
         else:
             print('Cant find anything. Looping over again now!')
     print('Tried to fix for 20 seconds and could not fix the issue\n'+
-    'Can you please report what happened to Dustyroo? Take screenshots if you can.')
+          'Can you please report what happened to Dustyroo? Take screenshots if you can.')
     Stop_Bot()
 #lobby_play_check()
 
 def test():
 
     print('Made by: Dustyroo\ndebug current level is '+'~'+str(debug_me)+'~\n\n'+
-    'Screen Resolution Choices are:\n1) 1080p\n2) 1440p\n3) 720p'+
-    '\n4) Other/ None of the above fit my Screen')
+          'Screen Resolution Choices are:\n1) 1080p\n2) 1440p\n3) 720p'+
+          '\n4) Other/ None of the above fit my Screen')
     resolution_choice = input('Please enter your Resolutin Choice: ')
     if resolution_choice == '1':
-        print('You have chosen: 1) 1080p\nThere is a 10s delay before starting The Bot'
-        + ' \nOpen the game and Wait!')
+        print('You have chosen: 1) 1080p\nThere is a 10s delay before starting The Bot'+
+              ' \nOpen the game and Wait!')
         long_start_delay()
     elif resolution_choice == '2':
         print('You have chosen: 2) 1440p\nSorry I have not made a support for this resolution.\n'+
-        'Please contant dustyroo if you want this resolution implemented!')
+              'Please contant dustyroo if you want this resolution implemented!')
         Stop_Bot()
     elif resolution_choice == '3':
-        print('You have chosen: 1) 720p\nSorry I have not made a support for this resolution.\n'+
-        'Please contant dustyroo if you want this resolution implemented!')
+        print('You have chosen: 3) 720p\nSorry I have not made a support for this resolution.\n'+
+              'Please contant dustyroo if you want this resolution implemented!')
         Stop_Bot()
     elif resolution_choice == '4':
         print('If I do not support your resolution contant dustyroo about it in detail and it will be implemented.')
@@ -178,4 +184,3 @@ def test():
         clear()
         test()
 test()
-
