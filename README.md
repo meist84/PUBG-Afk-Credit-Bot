@@ -1,4 +1,7 @@
 # PUBG-Afk-Farm-Bot
+
+Bot for Playerunknown Battlegrounds that AFK farms battlepoints
+
 To end or close the program without doing it manually move your mouse to the top left of the screen.
 
 Updating daily! It will work by the end of the day
