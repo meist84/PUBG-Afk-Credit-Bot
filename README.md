@@ -31,6 +31,7 @@ Need anymore assistance add me on Discord @Dustyroo#4303 and PM me.
 ## Check List
 
 I plan to keep updating the bot with new functions:
+* Earn more BP
 * Make a way so you can leave earlier
 * Add more resolutions
 
