@@ -5,6 +5,8 @@ Updating daily! It will work by the end of the day
 
 The bot works in fullscreen windowed mode and fullscreen mode.
 
+If you see someone repacking it elsewhere it probably isnt safe.
+
 ## Troubleshooting and debugging 
 
 The bot will auto debug and self fix.
@@ -21,16 +23,3 @@ I plan to keep updating the bot with new functions like:
 * Make the bot work
 * Add more resolutions
 * Auto Debug+ Self fixing
-# Future
-
-I plan to keep updating the bot with new functions like:
-
-* Auto fighting afk players so you can leave earlier(I have an idea of how to do it but it will be more long term) 
-
-* Selecting the server
-
-* Selecting the random jump time 
-
-* Getting the quit button to work again(lol I swear it used to work)
-
-If you see someone repacking it elsewhere it probably isnt safe..
