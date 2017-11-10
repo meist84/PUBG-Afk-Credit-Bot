@@ -27,14 +27,12 @@ Need anymore assistance add me on Discord @Dustyroo#4303 and PM me.
 ## Check List
 
 I plan to keep updating the bot with new functions:
-
-* Make the bot work
 * Make a way so you can leave earlier
 * Add more resolutions
 
 Functions I have implemented:
-
-* Auto Debug+ Self fixing
+* Make the bot work
+* Auto Debug+ Self fixing(50% implemented)
 * Resolution added 1080p
 ## Pull requests
 
