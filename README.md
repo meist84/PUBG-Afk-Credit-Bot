@@ -8,7 +8,7 @@ if the bot is not doing anything try:
 
 * Making sure reshade or any other color changers is turned off
 
-## To Do:
+## To Do
 * Make the bot work- It will work by the end of the day
 * Add resolutions
 * Auto Debug+ Self fixing
