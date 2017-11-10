@@ -11,7 +11,7 @@ If it keeps debugging and cant self fix make sure you do the following:
 
 * Making sure reshade or any other color changers is turned off
 * Making sure your screen and game resolution matches the resolution you selected
-* Making sure the game is NOT running in windowed mode. - make sure to tell that what it will work in-
+* Making sure the game is NOT running in windowed mode BUT it will work in fullscreen windowed.
 
 ## To Do
 * Make the bot work- It will work by the end of the day
