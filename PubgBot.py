@@ -6,8 +6,10 @@ import pyautogui
 
 debug_me = 0
 clear = lambda: os.system('cls')
-wait_for_drop = int
 leave_game = int
+wait_to_drop = int
+grounded_time = 0
+fuck_nig = int
 
 def short_count_down():
     for i in range(1, 6) [::-1]:
@@ -18,25 +20,72 @@ def Stop_Bot():
     print('Stopped THE BOT!')
     time.sleep(1000000)
     Stop_Bot()
-def parachute_max_distance():
-    print('now we have to press w alot faggot')
-    for i in range(1, 150):
-        print('You pressed W this many times:'+str(i)+'')
-        pyautogui.keyDown('w') 
-        time.sleep(0.5)
-        pyautogui.keyUp('w')
+
+def end_game_restart():
+    time.sleep(3)
+    if pyautogui.pixelMatchesColor(875, 591, (255, 255, 255)) and pyautogui.pixelMatchesColor(750, 597, (255, 255, 255)) is True:
+        pyautogui.click(841, 572)
         time.sleep(1)
-    Stop_Bot()
+        pyautogui.click()
+        time.sleep(5)
+        fallback_debug_self_fix()
+
+def on_land_check():
+    global leave_game
+    global grounded_time
+    print('Are you on land?')
+    print(leave_game)
+    leave_game -= grounded_time
+    print(leave_game)
+    print(grounded_time)
+    if pyautogui.pixelMatchesColor(1805, 889, (17, 48, 62), tolerance=20) is True or pyautogui.pixelMatchesColor(1805, 889, (20, 55, 72), tolerance=20) is True or pyautogui.pixelMatchesColor(1805, 889, (27, 62, 84), tolerance=20) is True or pyautogui.pixelMatchesColor(1805, 889, (23, 58, 78), tolerance=20) is True:
+        for i in range(1, leave_game) [::-1]:
+            print('Time left before restart:'+str(i)+'')
+            pyautogui.keyDown('space') 
+            time.sleep(0.5)
+            pyautogui.keyUp('space')
+            time.sleep(0.5) 
+        pyautogui.press('escape')        
+        end_game_restart()
+    else:
+        time.sleep(5)
+        leave_game -= 5
+        pyautogui.press('z')
+        for i in range(1, leave_game) [::-1]:
+            print('Time left before restart:'+str(i)+'')
+            time.sleep(1)
+        pyautogui.press('escape')
+        end_game_restart()
+
+def parachute_max_distance():
+    global grounded_time
+    print('now we have to press w alot faggot')
+    for i in range(1, 150) :
+        print('You pressed W this many times:'+str(i)+'')
+        grounded_time += 1
+        if pyautogui.pixelMatchesColor(172, 38, (255, 255, 255)) and pyautogui.pixelMatchesColor(172, 53, (255, 255, 255)) is True:
+            
+            pyautogui.keyDown('w') 
+            time.sleep(0.5)
+            pyautogui.keyUp('w')
+            time.sleep(1)
+        else:
+            on_land_check()
+    fallback_debug_self_fix()
 
 def playing_game_check():
-    global wait_for_drop
+    global wait_to_drop
     global leave_game
     print('game started!')
-    leave_game = 265 - wait_for_drop
     for i in range(1, 1000):
         print('Check to see if over water yet! '+str(i)+'')
         if pyautogui.pixelMatchesColor(1805, 889, (25, 61, 82), tolerance=20) is True:
             wait_to_drop = random.randint(1, 32)
+            leave_game = 265 - wait_to_drop
+            leave_game -= 24
+            print(leave_game)
+            print(wait_to_drop)
+            print('this is how long you have till you leave in seconds!')
             print('you are flying over water')
             time.sleep(23)
             print('dont sleeping?')
@@ -70,18 +119,24 @@ def in_game_check():
 
 def lobby_play_check():
     global debug_me
+    global leave_game
+    global wait_to_drop
+    global grounded_time
     print('\nDebug level is currently'+'~'+str(debug_me)+'~\n')
+    leave_game = 0
+    wait_to_drop = 0
+    grounded_time = 0
     if debug_me == 1:
         time.sleep(2)
         fallback_debug_self_fix()
     elif debug_me == 0:
         pyautogui.tripleClick(956, 539)
         if pyautogui.pixelMatchesColor(195, 51, (168, 101, 2)) and pyautogui.pixelMatchesColor(94, 15, (207, 136, 14)) is True:
-            time.sleep(1)
+            time.sleep(0.5)
             pyautogui.moveTo(195, 51)
-            time.sleep(1)
+            time.sleep(0.5)
             pyautogui.click(81, 715)
-            time.sleep(1)
+            time.sleep(0.5)
             start_game_check()
         else:
             time.sleep(1)
@@ -95,14 +150,14 @@ def lobby_play_check():
 
 def start_game_check():
     if pyautogui.pixelMatchesColor(185, 719, (20, 20, 20)) is True:
-        time.sleep(1)
+        time.sleep(0.5)
         pyautogui.click(184, 717)
         start_game_check()
     elif pyautogui.pixelMatchesColor(185, 719, (255, 255, 255)) is True:
-        time.sleep(1)
+        time.sleep(0.5)
         pyautogui.click(195, 51)
         print('wow it worked!')
-        time.sleep(1)
+        time.sleep(0.5)
         in_game_check()
     else:
         time.sleep(1)
@@ -123,7 +178,7 @@ def fallback_debug_self_fix():
     time.sleep(1)
     if pyautogui.position() == (0, 0):
         Stop_Bot()
-    for i in range(1, 300):
+    for i in range(1, 500):
         print('Times debug check and tried to fix: '+str(i))
         if pyautogui.pixelMatchesColor(195, 51, (168, 101, 2)) is True:
             debug_me = 0
@@ -155,7 +210,6 @@ def fallback_debug_self_fix():
     print('Tried to fix for 20 seconds and could not fix the issue\n'+
           'Can you please report what happened to Dustyroo? Take screenshots if you can.')
     Stop_Bot()
-#lobby_play_check()
 
 def test():
 
