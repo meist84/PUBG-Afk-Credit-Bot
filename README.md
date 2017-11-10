@@ -20,7 +20,7 @@ If it keeps debugging and cant self fix make sure you do the following:
 I plan to keep updating the bot with new functions like:
 * []Make the bot work
 * []Add more resolutions
-* [\]Auto Debug+ Self fixing
+* [\]Auto Debug+ Self fixingdad
 # Future
 
 I plan to keep updating the bot with new functions like:
