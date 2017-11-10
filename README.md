@@ -18,9 +18,9 @@ If it keeps debugging and cant self fix make sure you do the following:
 ## Check List
 
 I plan to keep updating the bot with new functions like:
-* []Make the bot work
-* []Add more resolutions
-* [\]Auto Debug+ Self fixingdad
+* Make the bot work
+* Add more resolutions
+* Auto Debug+ Self fixing
 # Future
 
 I plan to keep updating the bot with new functions like:
