@@ -6,10 +6,9 @@ import pyautogui
 
 debug_me = 0
 clear = lambda: os.system('cls')
-leave_game = int
-wait_to_drop = int
-grounded_time = 0
-fuck_nig = int
+leave_game = float
+wait_to_drop = float
+grounded_time = float
 yn_debug = int
 
 def short_count_down():
@@ -22,6 +21,15 @@ def Stop_Bot():
     time.sleep(1000000)
     Stop_Bot()
 
+def check_if_dead():
+    if pyautogui.pixelMatchesColor(1637, 960, (255, 255, 255)) and pyautogui.pixelMatchesColor(1765, 944, (255, 255, 255)) is True:
+        pyautogui.click(1710, 951)
+        time.sleep(1)
+        pyautogui.tripleClick(854, 569)
+        time.sleep(5)
+        fallback_debug_self_fix()
+    fallback_debug_self_fix()
+
 def end_game_restart():
     time.sleep(3)
     if pyautogui.pixelMatchesColor(875, 591, (255, 255, 255)) and pyautogui.pixelMatchesColor(750, 597, (255, 255, 255)) is True:
@@ -30,6 +38,7 @@ def end_game_restart():
         pyautogui.click()
         time.sleep(5)
         fallback_debug_self_fix()
+    fallback_debug_self_fix()
 
 def on_land_check():
     global leave_game
@@ -43,9 +52,11 @@ def on_land_check():
     if yn_debug == 1:
         print(grounded_time)
     if pyautogui.pixelMatchesColor(1805, 889, (17, 48, 62), tolerance=20) is True or pyautogui.pixelMatchesColor(1805, 889, (20, 55, 72), tolerance=20) is True or pyautogui.pixelMatchesColor(1805, 889, (27, 62, 84), tolerance=20) is True or pyautogui.pixelMatchesColor(1805, 889, (23, 58, 78), tolerance=20) is True:
-        for i in range(1, leave_game) [::-1]:
+        for i in range(1, round(leave_game)) [::-1]:
+            if pyautogui.pixelMatchesColor(1637, 960, (255, 255, 255)) and pyautogui.pixelMatchesColor(1765, 944, (255, 255, 255)) is True:
+                check_if_dead()
             if yn_debug == 1:
-                print('Time left before restart:'+str(i)+'')
+                print('Time left before restart: '+str(i)+' ')
             pyautogui.keyDown('space') 
             time.sleep(0.5)
             pyautogui.keyUp('space')
@@ -53,12 +64,14 @@ def on_land_check():
         pyautogui.press('escape')        
         end_game_restart()
     else:
-        time.sleep(5)
-        leave_game -= 5
+        time.sleep(3)
+        leave_game -= 3
         pyautogui.press('z')
-        for i in range(1, leave_game) [::-1]:
+        for i in range(1, round(leave_game)) [::-1]:
+            if pyautogui.pixelMatchesColor(1637, 960, (255, 255, 255)) and pyautogui.pixelMatchesColor(1765, 944, (255, 255, 255)) is True:
+                check_if_dead()
             if yn_debug == 1:
-                print('Time left before restart:'+str(i)+'')
+                print('Time left before restart: '+str(i)+' ')
             time.sleep(1)
         pyautogui.press('escape')
         end_game_restart()
@@ -66,10 +79,14 @@ def on_land_check():
 def parachute_max_distance():
     global grounded_time
     print('Waiting till you land on ground')
-    for i in range(1, 150) :
+    n = 0.0
+    for i in range(1, 150): 
+        n += 1.5
         if yn_debug == 1:
-            print('Time before you can leave is now less by:'+str(i)+'')
-        grounded_time += 1
+            print('Time before you can leave is reduced by: '+str(n)+' seconds')
+        grounded_time += 1.5
+        if pyautogui.pixelMatchesColor(1637, 960, (255, 255, 255)) and pyautogui.pixelMatchesColor(1765, 944, (255, 255, 255)) is True:
+                check_if_dead()
         if pyautogui.pixelMatchesColor(172, 38, (255, 255, 255)) and pyautogui.pixelMatchesColor(172, 53, (255, 255, 255)) is True:
             
             pyautogui.keyDown('w') 
@@ -85,21 +102,22 @@ def playing_game_check():
     global leave_game
     for i in range(1, 1000):
         if yn_debug == 1:
-            print('Check to see if you are in a plane! '+str(i)+'')
+            print('Check to see if you are in a plane! '+str(i)+' ')
         if pyautogui.pixelMatchesColor(173, 50, (255, 255, 255)) and pyautogui.pixelMatchesColor(167, 47, (255, 255, 255)) is True:
-            wait_to_drop = random.randint(1, 32)
-            leave_game = 265 - wait_to_drop
-            leave_game -= 24
+            wait_to_drop = random.randint(1, 32) + 0.0
+            leave_game = 265.0 - wait_to_drop
+            leave_game -= 32.0
             if yn_debug == 1:
-                print('the random wait time is'+str(wait_to_drop)+' Seconds')
+                print('the random wait time is '+str(wait_to_drop)+' Seconds')
             if yn_debug == 1:
-                print('You have to wait'+str(leave_game)+' Seconds till you leave the game!')
+                print('You have to wait '+str(leave_game)+' Seconds till you leave the game!')
             if yn_debug == 1:
                 print('you are flying')
             time.sleep(23)
             if yn_debug == 1:
                 print('Dropping in a few secconds')
             time.sleep(wait_to_drop)
+            pyautogui.press('f')
             pyautogui.press('f')
             time.sleep(9)
             pyautogui.press('f')
@@ -111,7 +129,7 @@ def playing_game_check():
 def second_in_game_check():
     for i in range(1, 80):
         if yn_debug == 1:
-            print('Times check to see if game started '+str(i)+'seconds')
+            print('Times check to see if game started '+str(i)+' seconds')
         time.sleep(1)
         if pyautogui.pixelMatchesColor(851, 678, (160, 255, 226)) is not True:
             if pyautogui.pixelMatchesColor(952, 687, (160, 255, 226)) is not True:
@@ -124,7 +142,7 @@ def second_in_game_check():
 def in_game_check():
     for i in range(1, 80):
         if yn_debug == 1:
-            print('Times check to see if you are in game '+str(i)+'seconds')
+            print('Times check to see if you are in game '+str(i)+' seconds')
         time.sleep(1)
         if pyautogui.pixelMatchesColor(851, 678, (160, 255, 226)) and pyautogui.pixelMatchesColor(952, 687, (160, 255, 226)) is True:
             print('You are in game!')
@@ -137,9 +155,9 @@ def lobby_play_check():
     global wait_to_drop
     global grounded_time
     print('\nDebug level is currently'+'~'+str(debug_me)+'~\n')
-    leave_game = 0
-    wait_to_drop = 0
-    grounded_time = 0
+    leave_game = 0.0
+    wait_to_drop = 0.0
+    grounded_time = 0.0
     if debug_me == 1:
         time.sleep(2)
         fallback_debug_self_fix()
@@ -200,58 +218,84 @@ def fallback_debug_self_fix():
         if pyautogui.pixelMatchesColor(892, 591, (255, 255, 255)) and pyautogui.pixelMatchesColor(1005, 584, (48, 48, 48)) is True:
             debug_me = 0
             print('\nFound and Fixed The Issue!#1\n')
+            pyautogui.click(892, 591)
+            time.sleep(1)
+            lobby_play_check()
+        elif pyautogui.pixelMatchesColor(749, 365, (155, 164, 182)) and pyautogui.pixelMatchesColor(1086, 358, (155, 164, 182)) is True:
+            debug_me = 0
+            print('\nFound and Fixed The Issue!#2\n')
+            pyautogui.click(961, 652)
+            time.sleep(1)
+            lobby_play_check()
+        elif pyautogui.pixelMatchesColor(1117, 458, (255, 255, 255)) and pyautogui.pixelMatchesColor(808, 475, (255, 255, 255)) is True:
+            debug_me = 0
+            print('\nFound and Fixed The Issue!#3\n')
+            pyautogui.click(963, 533)
+            time.sleep(1)
+            lobby_play_check()
+        elif pyautogui.pixelMatchesColor(1201, 488, (255, 255, 255)) and pyautogui.pixelMatchesColor(961, 510, (255, 255, 255)) is True:
+            debug_me = 0
+            print('\nFound and Fixed The Issue!#4\n')
+            pyautogui.click(1051, 574)
             time.sleep(1)
             lobby_play_check()
         elif pyautogui.pixelMatchesColor(892, 591, (255, 182, 0)) and pyautogui.pixelMatchesColor(1005, 584, (255, 255, 255)) is True:
             debug_me = 0
-            print('\nFound and Fixed The Issue!#2\n')
+            print('\nFound and Fixed The Issue!#5\n')
+            pyautogui.click(892, 591)
             time.sleep(1)
             lobby_play_check()
         elif pyautogui.pixelMatchesColor(195, 51, (168, 101, 2)) is True:
             debug_me = 0
-            print('\nFound and Fixed The Issue!#3\n')
+            print('\nFound and Fixed The Issue!#6\n')
+            time.sleep(1)
+            lobby_play_check()
+        elif pyautogui.pixelMatchesColor(963, 363, (155, 164, 182)) and pyautogui.pixelMatchesColor(811, 346, (155, 164, 182)) is True:
+            debug_me = 0
+            print('\nFound and Fixed The Issue!#7\n')
+            pyautogui.click(968, 649)
             time.sleep(1)
             lobby_play_check()
         elif pyautogui.pixelMatchesColor(185, 719, (20, 20, 20)) is True:
             debug_me = 0
-            print('\nFound and Fixed The Issue!#4\n')
+            print('\nFound and Fixed The Issue!#8\n')
             time.sleep(1)
             start_game_check()
         elif pyautogui.pixelMatchesColor(185, 719, (255, 255, 255)) is True:
             debug_me = 0
-            print('\nFound and Fixed The Issue!#5\n')
+            print('\nFound and Fixed The Issue!#9\n')
             time.sleep(1)
             start_game_check()
         elif pyautogui.pixelMatchesColor(86, 720, (159, 159, 159)) and pyautogui.pixelMatchesColor(44, 722, (164, 164, 163)) is True:
             debug_me = 0
-            print('\nFound and Fixed The Issue!#6\n')
+            print('\nFound and Fixed The Issue!#10\n')
             time.sleep(1)
             lobby_play_check()
         elif pyautogui.pixelMatchesColor(86, 720, (255, 255, 255)) and pyautogui.pixelMatchesColor(44, 722, (255, 255, 255)) is True:
             debug_me = 0
-            print('\nFound and Fixed The Issue!#7\n')
+            print('\nFound and Fixed The Issue!#11\n')
             time.sleep(1)
             lobby_play_check()
         elif pyautogui.pixelMatchesColor(851, 678, (160, 255, 226)) and pyautogui.pixelMatchesColor(952, 687, (160, 255, 226)) is True:
             debug_me = 0
-            print('\nFound and Fixed The Issue!#8\n')
+            print('\nFound and Fixed The Issue!#12\n')
             time.sleep(1)
             in_game_check()
         elif pyautogui.pixelMatchesColor(173, 50, (255, 255, 255)) and pyautogui.pixelMatchesColor(167, 47, (255, 255, 255)) is True:
             debug_me = 0
-            print('\nFound and Fixed The Issue!#9\n')
+            print('\nFound and Fixed The Issue!#13\n')
             print('Timer is probably broken but the bot will keep going and fix it')
             time.sleep(1)
             playing_game_check()
-        elif pyautogui.pixelMatchesColor(172, 38, (255, 255, 255)) and pyautogui.pixelMatchesColor(172, 53, (255, 255, 255)) is True:
+        elif pyautogui.pixelMatchesColor(172, 38, (255, 255, 255)) and pyautogui.pixelMatchesColor(165, 41, (255, 255, 255)) is True:
             debug_me = 0
-            print('\nFound and Fixed The Issue!#10\n')
+            print('\nFound and Fixed The Issue!#14\n')
             print('Timer is probably broken but the bot will keep going and fix it')
             time.sleep(1)
             parachute_max_distance()
         elif pyautogui.pixelMatchesColor(1805, 889, (17, 48, 62), tolerance=20) is True or pyautogui.pixelMatchesColor(1805, 889, (20, 55, 72), tolerance=20) is True or pyautogui.pixelMatchesColor(1805, 889, (27, 62, 84), tolerance=20) is True or pyautogui.pixelMatchesColor(1805, 889, (23, 58, 78), tolerance=20) is True:
             debug_me = 0
-            print('\nFound and Fixed The Issue!#11\n')
+            print('\nFound and Fixed The Issue!#15\n')
             print('Timer is probably broken but the bot will keep going and fix it')
             time.sleep(1)
             on_land_check()
@@ -263,10 +307,26 @@ def fallback_debug_self_fix():
             if pyautogui.pixelMatchesColor(38, 1032, (206, 204, 199), tolerance=30) is not True:
                 if pyautogui.pixelMatchesColor(45, 1002, (248, 248, 248), tolerance=30) is not True:
                     debug_me = 0
-                    print('\nFound and Fixed The Issue!#12\n')
+                    print('\nFound and Fixed The Issue!#16\n')
                     print('Timer is probably broken but the bot will keep going and fix it')
                     time.sleep(1)
                     on_land_check()
+        elif pyautogui.pixelMatchesColor(875, 591, (255, 255, 255)) and pyautogui.pixelMatchesColor(750, 597, (255, 255, 255)) is True:
+            debug_me = 0
+            print('\nFound and Fixed The Issue!#17\n')
+            time.sleep(1)
+            end_game_restart()
+        elif pyautogui.pixelMatchesColor(1637, 960, (255, 255, 255)) and pyautogui.pixelMatchesColor(1765, 944, (255, 255, 255)) is True:
+            debug_me = 0
+            print('\nFound and Fixed The Issue!#18\n')
+            time.sleep(1)
+            check_if_dead()
+        elif pyautogui.pixelMatchesColor(840, 345, (155, 164, 182)) and pyautogui.pixelMatchesColor(818, 364, (155, 164, 182)) is True:
+            debug_me = 0
+            print('\nFound and Fixed The Issue!#19\n')
+            pyautogui.click(960, 646)
+            time.sleep(1)
+            lobby_play_check()
         else:
             if yn_debug == 1:
                 print('Cant find anything. Looping over again now!')
