@@ -33,11 +33,12 @@ Need anymore assistance add me on Discord @Dustyroo#4303 and PM me.
 I plan to keep updating the bot with new functions:
 * Earn more BP
 * Make a way so you can leave earlier
+* Auto Debug+ Self fixing MORE advanced
 * Add more resolutions
 
 Functions I have implemented:
 * Make the bot work
-* Auto Debug+ Self fixing(50% implemented)
+* Auto Debug+ Self fixing
 * Resolution added 1080p
 ## Pull requests
 
