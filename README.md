@@ -12,6 +12,8 @@ The bot works in fullscreen windowed mode and fullscreen mode.
 
 # Working status
 
+Made from scratch by me.
+
 Ver. 1.12+
 
 If you see someone repacking it elsewhere it probably isnt safe.
