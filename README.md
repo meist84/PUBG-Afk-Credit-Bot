@@ -1,6 +1,8 @@
 # PUBG-Afk-Farm-Bot
 
-Bot for Playerunknown Battlegrounds that AFK farms battlepoints
+A really smart Bot for Playerunknown Battlegrounds that AFK farms battlepoints.
+
+It has Auto Debug+ Self fixing so dont worry a thing when you run it.
 
 If you cant manually close the bot move your mouse to the TOP left of the screen and wait.
 
