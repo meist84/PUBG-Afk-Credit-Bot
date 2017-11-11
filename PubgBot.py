@@ -349,7 +349,7 @@ def bot_second_start():
 
 def bot_first_start():
 
-    print('Made by: Dustyroo\ndebug current level is '+'~'+str(debug_me)+'~\n\n'+
+    print('Made by: Dustyroo\nVer. 1.12+\ndebug current level is '+'~'+str(debug_me)+'~\n\n'+
           'Screen Resolution Choices are:\n1) 1080p\n2) 1440p\n3) 720p'+
           '\n4) Other/ None of the above fit my Screen')
     resolution_choice = input('Please enter your Resolutin Choice: ')
