@@ -31,6 +31,7 @@ def check_if_dead():
     fallback_debug_self_fix()
 
 def end_game_restart():
+    print('Bot done Restarting!')
     time.sleep(3)
     if pyautogui.pixelMatchesColor(875, 591, (255, 255, 255)) and pyautogui.pixelMatchesColor(750, 597, (255, 255, 255)) is True:
         pyautogui.click(841, 572)
@@ -44,13 +45,7 @@ def on_land_check():
     global leave_game
     global grounded_time
     print('Landed!')
-    if yn_debug == 1:
-        print(leave_game)
     leave_game -= grounded_time
-    if yn_debug == 1:
-        print(leave_game)
-    if yn_debug == 1:
-        print(grounded_time)
     if pyautogui.pixelMatchesColor(1805, 889, (17, 48, 62), tolerance=20) is True or pyautogui.pixelMatchesColor(1805, 889, (20, 55, 72), tolerance=20) is True or pyautogui.pixelMatchesColor(1805, 889, (27, 62, 84), tolerance=20) is True or pyautogui.pixelMatchesColor(1805, 889, (23, 58, 78), tolerance=20) is True:
         for i in range(1, round(leave_game)) [::-1]:
             if pyautogui.pixelMatchesColor(1637, 960, (255, 255, 255)) and pyautogui.pixelMatchesColor(1765, 944, (255, 255, 255)) is True:
@@ -78,14 +73,14 @@ def on_land_check():
 
 def parachute_max_distance():
     global grounded_time
-    print('Waiting till you land on ground')
     n = 0.0
     for i in range(1, 150): 
         n += 1.5
         if yn_debug == 1:
-            print('Time before you can leave is reduced by: '+str(n)+' seconds')
+            print('Time before you can leave is reduced by: '+str(n)+' Seconds.')
         grounded_time += 1.5
-        if pyautogui.pixelMatchesColor(1637, 960, (255, 255, 255)) and pyautogui.pixelMatchesColor(1765, 944, (255, 255, 255)) is True:
+        if n > 80:
+            if pyautogui.pixelMatchesColor(1637, 960, (255, 255, 255)) and pyautogui.pixelMatchesColor(1765, 944, (255, 255, 255)) is True:
                 check_if_dead()
         if pyautogui.pixelMatchesColor(172, 38, (255, 255, 255)) and pyautogui.pixelMatchesColor(172, 53, (255, 255, 255)) is True:
             
@@ -108,20 +103,20 @@ def playing_game_check():
             leave_game = 265.0 - wait_to_drop
             leave_game -= 32.0
             if yn_debug == 1:
-                print('the random wait time is '+str(wait_to_drop)+' Seconds')
+                print('the random wait time is '+str(wait_to_drop)+' Seconds.')
             if yn_debug == 1:
                 print('You have to wait '+str(leave_game)+' Seconds till you leave the game!')
             if yn_debug == 1:
-                print('you are flying')
+                print('You are in the plane.')
             time.sleep(23)
             if yn_debug == 1:
-                print('Dropping in a few secconds')
+                print('Dropping in '+str(wait_to_drop)+' Secconds.')
             time.sleep(wait_to_drop)
             pyautogui.press('f')
             pyautogui.press('f')
             time.sleep(9)
             pyautogui.press('f')
-            print('You have dropped')
+            print('You have dropped!')
             parachute_max_distance()
     print('can you drop!?')
     fallback_debug_self_fix()
@@ -136,13 +131,13 @@ def second_in_game_check():
                 print('The game has started!')
                 playing_game_check()
     if yn_debug == 1:
-            print('needed more time to check')
+            print('needed more time to check.')
     fallback_debug_self_fix()
 
 def in_game_check():
     for i in range(1, 80):
         if yn_debug == 1:
-            print('Times check to see if you are in game '+str(i)+' seconds')
+            print('Times check to see if you are in game '+str(i)+' Seconds.')
         time.sleep(1)
         if pyautogui.pixelMatchesColor(851, 678, (160, 255, 226)) and pyautogui.pixelMatchesColor(952, 687, (160, 255, 226)) is True:
             print('You are in game!')
@@ -177,7 +172,7 @@ def lobby_play_check():
     else:
         time.sleep(1)
         if yn_debug == 1:
-            print('Nothing is happening\n')
+            print('Nothing is happening.\n')
         fallback_debug_self_fix()
 
 def start_game_check():
@@ -336,7 +331,7 @@ def fallback_debug_self_fix():
 
 def bot_second_start():
     global yn_debug
-    print('Do you want all of the constole functions showing(Spam)\n1) Yes\n2) No(recommended)')
+    print('Do you want all of the constole functions showing(Spaming constole and more lag)\n1) Yes\n2) No(recommended)')
     yn_debug = input('Please enter your Constole Choice: ')
     if yn_debug == '1':
         yn_debug = 1
@@ -347,7 +342,7 @@ def bot_second_start():
         print('There is a 10s delay before starting The Bot'+' \nOpen the game and Wait!\nBot Starting in:')
         long_start_delay()
     else:
-        print('you put '+'~'+yn_debug+'~'+' this is not one of the options\nPlease try again in:')
+        print('You put '+'~'+yn_debug+'~'+' this is not one of the options\nPlease try again in:')
         short_count_down()
         clear()
         bot_second_start()
@@ -373,7 +368,7 @@ def bot_first_start():
         print('If I do not support your resolution contant dustyroo about it in detail and it will be implemented.')
         Stop_Bot()
     else:
-        print('you put '+'~'+resolution_choice+'~'+' this is not one of the options\nPlease try again in:')
+        print('You put '+'~'+resolution_choice+'~'+' this is not one of the options\nPlease try again in:')
         short_count_down()
         clear()
         bot_first_start()
