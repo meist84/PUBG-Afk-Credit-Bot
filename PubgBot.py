@@ -180,8 +180,6 @@ def lobby_play_check():
             time.sleep(0.5)
             pyautogui.click(81, 715)# clicks squads
             time.sleep(0.5)
-            pyautogui.click(server_picker)# clicks the server you picked
-            time.sleep(0.5)
             start_game_check()
         else:
             time.sleep(1)
@@ -197,12 +195,17 @@ def lobby_play_check():
 def start_game_check():
     if pyautogui.pixelMatchesColor(185, 719, (20, 20, 20)) is True:#box is checked and click it then play
         time.sleep(0.5)
-        pyautogui.click(184, 717)
-        pyautogui.click(195, 51)
+        pyautogui.click(184, 717)#clicked the check box
+        time.sleep(0.5)
+        pyautogui.click(server_picker)# clicks the server you picked
+        time.sleep(0.5)
+        pyautogui.click(195, 51)#clicked play
         in_game_check()
     elif pyautogui.pixelMatchesColor(185, 719, (255, 255, 255)) is True:#box is not checked and clicked play
         time.sleep(0.5)
-        pyautogui.click(195, 51)
+        pyautogui.click(server_picker)# clicks the server you picked
+        time.sleep(0.5)
+        pyautogui.click(195, 51)#clicked play
         print('Starting Game!')
         time.sleep(0.5)
         in_game_check()
@@ -411,7 +414,7 @@ def bot_second_start():
         bot_second_start()
 
 def bot_first_start():
-    print('Made by: Dustyroo\nVer. 1.12+\ndebug current level is '+'~'+str(debug_me)+'~\n\n'+
+    print('Made by: Dustyroo\nVer. 1.21+\nDebug current level is '+'~'+str(debug_me)+'~\n\n'+
           'Screen Resolution Choices are:\n1) 1080p\n2) 1440p\n3) 720p'+
           '\n4) Other/ None of the above fit my Screen')
     resolution_choice = input('Please enter your Resolutin Choice: ')
