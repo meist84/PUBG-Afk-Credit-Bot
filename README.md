@@ -43,6 +43,7 @@ I plan to keep updating the bot with new functions:
 
 Functions I have implemented:
 * Make the bot work
+* Auto float if in water
 * Auto Debug+ Self fixing
 * Resolution added 1080p
 ## Donate
