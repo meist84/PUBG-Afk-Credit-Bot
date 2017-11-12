@@ -6,10 +6,12 @@ import pyautogui
 
 debug_me = 0
 clear = lambda: os.system('cls')
-leave_game = float
-wait_to_drop = float
-grounded_time = float
-yn_debug = int
+leave_game = 233.0
+wait_to_drop = 0.0
+grounded_time = 0.0
+yn_debug = 2
+server_picker = 0, 0
+
 
 def short_count_down():
     for i in range(1, 6) [::-1]:
@@ -31,6 +33,9 @@ def check_if_dead():
     fallback_debug_self_fix()
 
 def end_game_restart():
+    global leave_game
+    global grounded_time
+    
     print('Bot done Restarting!')
     time.sleep(3)
     if pyautogui.pixelMatchesColor(875, 591, (255, 255, 255)) and pyautogui.pixelMatchesColor(750, 597, (255, 255, 255)) is True:
@@ -38,12 +43,15 @@ def end_game_restart():
         time.sleep(1)
         pyautogui.click()
         time.sleep(5)
+        leave_game = 233.0
+        grounded_time = 0.0
         fallback_debug_self_fix()
     fallback_debug_self_fix()
 
 def on_land_check():
     global leave_game
     global grounded_time
+
     print('Landed!')
     leave_game -= grounded_time
     if pyautogui.pixelMatchesColor(1805, 889, (17, 48, 62), tolerance=20) is True or pyautogui.pixelMatchesColor(1805, 889, (20, 55, 72), tolerance=20) is True or pyautogui.pixelMatchesColor(1805, 889, (27, 62, 84), tolerance=20) is True or pyautogui.pixelMatchesColor(1805, 889, (23, 58, 78), tolerance=20) is True:
@@ -52,11 +60,11 @@ def on_land_check():
                 check_if_dead()
             if yn_debug == 1:
                 print('Time left before restart: '+str(i)+' ')
-            pyautogui.keyDown('space') 
+            pyautogui.keyDown('space')
             time.sleep(0.5)
             pyautogui.keyUp('space')
-            time.sleep(0.5) 
-        pyautogui.press('escape')        
+            time.sleep(0.5)
+        pyautogui.press('escape')
         end_game_restart()
     else:
         time.sleep(3)
@@ -70,20 +78,21 @@ def on_land_check():
             time.sleep(1)
         pyautogui.press('escape')
         end_game_restart()
+    fallback_debug_self_fix()
 
 def parachute_max_distance():
     global grounded_time
-    n = 0.0
-    for i in range(1, 150): 
-        n += 1.5
+
+    new_time = 0.0
+    for i in range(1, 150):
+        new_time += 1.5
         if yn_debug == 1:
-            print('Time before you can leave is reduced by: '+str(n)+' Seconds.')
+            print('Time before you can leave is reduced by: '+str(new_time)+' Seconds.')
         grounded_time += 1.5
-        if n > 80:
+        if new_time > 80:
             if pyautogui.pixelMatchesColor(1637, 960, (255, 255, 255)) and pyautogui.pixelMatchesColor(1765, 944, (255, 255, 255)) is True:
                 check_if_dead()
         if pyautogui.pixelMatchesColor(172, 38, (255, 255, 255)) and pyautogui.pixelMatchesColor(172, 53, (255, 255, 255)) is True:
-            
             pyautogui.keyDown('w') 
             time.sleep(0.5)
             pyautogui.keyUp('w')
@@ -95,13 +104,13 @@ def parachute_max_distance():
 def playing_game_check():
     global wait_to_drop
     global leave_game
+
     for i in range(1, 1000):
         if yn_debug == 1:
             print('Check to see if you are in a plane! '+str(i)+' ')
         if pyautogui.pixelMatchesColor(173, 50, (255, 255, 255)) and pyautogui.pixelMatchesColor(167, 47, (255, 255, 255)) is True:
-            wait_to_drop = random.randint(1, 32) + 0.0
-            leave_game = 265.0 - wait_to_drop
-            leave_game -= 32.0
+            wait_to_drop = random.randint(1, 32)
+            leave_game -= wait_to_drop
             if yn_debug == 1:
                 print('the random wait time is '+str(wait_to_drop)+' Seconds.')
             if yn_debug == 1:
@@ -112,13 +121,19 @@ def playing_game_check():
             if yn_debug == 1:
                 print('Dropping in '+str(wait_to_drop)+' Secconds.')
             time.sleep(wait_to_drop)
-            pyautogui.press('f')
-            pyautogui.press('f')
-            time.sleep(9)
-            pyautogui.press('f')
             print('You have dropped!')
+            pyautogui.press('f')
+            pyautogui.press('f')
+            pyautogui.keyDown('w')
+            time.sleep(9)
+            pyautogui.keyUp('w')
+            pyautogui.press('f')
+            pyautogui.press('f')
+            if yn_debug == 1:
+                print('Bot opened the Parachute!')
             parachute_max_distance()
-    print('can you drop!?')
+    if yn_debug == 1:
+        print('can you drop!?')
     fallback_debug_self_fix()
 
 def second_in_game_check():
@@ -131,37 +146,41 @@ def second_in_game_check():
                 print('The game has started!')
                 playing_game_check()
     if yn_debug == 1:
-            print('needed more time to check.')
+        print('needed more time to check.')
     fallback_debug_self_fix()
 
 def in_game_check():
-    for i in range(1, 80):
+    for i in range(1, 60):
         if yn_debug == 1:
             print('Times check to see if you are in game '+str(i)+' Seconds.')
         time.sleep(1)
         if pyautogui.pixelMatchesColor(851, 678, (160, 255, 226)) and pyautogui.pixelMatchesColor(952, 687, (160, 255, 226)) is True:
             print('You are in game!')
             second_in_game_check()
+    if yn_debug == 1:
+        print('Timed out debugging now')
     fallback_debug_self_fix()
 
 def lobby_play_check():
     global debug_me
     global leave_game
     global wait_to_drop
-    global grounded_time
+
     print('\nDebug level is currently'+'~'+str(debug_me)+'~\n')
-    leave_game = 0.0
-    wait_to_drop = 0.0
-    grounded_time = 0.0
+    
     if debug_me == 1:
         time.sleep(2)
         fallback_debug_self_fix()
     elif debug_me == 0:
-        if pyautogui.pixelMatchesColor(195, 51, (168, 101, 2)) and pyautogui.pixelMatchesColor(94, 15, (207, 136, 14)) is True:
-            time.sleep(0.5)
+        if pyautogui.pixelMatchesColor(195, 51, (168, 101, 2)) and pyautogui.pixelMatchesColor(94, 15, (207, 136, 14)) is True: # Move mouse to play in lobby
+            time.sleep(0.1)
             pyautogui.moveTo(195, 51)
             time.sleep(0.5)
-            pyautogui.click(81, 715)
+            pyautogui.click(86, 203)# clicks na server so rest works
+            time.sleep(0.5)
+            pyautogui.click(81, 715)# clicks squads
+            time.sleep(0.5)
+            pyautogui.click(server_picker)# clicks the server you picked
             time.sleep(0.5)
             start_game_check()
         else:
@@ -176,11 +195,12 @@ def lobby_play_check():
         fallback_debug_self_fix()
 
 def start_game_check():
-    if pyautogui.pixelMatchesColor(185, 719, (20, 20, 20)) is True:
+    if pyautogui.pixelMatchesColor(185, 719, (20, 20, 20)) is True:#box is checked and click it then play
         time.sleep(0.5)
         pyautogui.click(184, 717)
-        start_game_check()
-    elif pyautogui.pixelMatchesColor(185, 719, (255, 255, 255)) is True:
+        pyautogui.click(195, 51)
+        in_game_check()
+    elif pyautogui.pixelMatchesColor(185, 719, (255, 255, 255)) is True:#box is not checked and clicked play
         time.sleep(0.5)
         pyautogui.click(195, 51)
         print('Starting Game!')
@@ -202,10 +222,12 @@ def long_start_delay():
 
 def fallback_debug_self_fix():
     global debug_me
+    global leave_game
     print('')
     time.sleep(1)
     if pyautogui.position() == (0, 0):
         Stop_Bot()
+    leave_game = 233.0
     for i in range(1, 500):
         time.sleep(0.1)
         if yn_debug == 1:
@@ -329,7 +351,7 @@ def fallback_debug_self_fix():
           'Can you please report what happened to Dustyroo? Take screenshots if you can.')
     Stop_Bot()
 
-def bot_second_start():
+def bot_third_start():
     global yn_debug
     print('Do you want all of the constole functions showing(Spaming constole and more lag)\n1) Yes\n2) No(recommended)')
     yn_debug = input('Please enter your Constole Choice: ')
@@ -345,23 +367,63 @@ def bot_second_start():
         print('You put '+'~'+yn_debug+'~'+' this is not one of the options\nPlease try again in:')
         short_count_down()
         clear()
+        bot_third_start()
+
+def bot_second_start():
+    global server_picker
+    print('What server do you want to be playing in?')
+    print('1) NA Servers\n2) EU Servers\n3) AS Servers\n4) KR/JP Servers\n'+
+          '5) OC Servers\n6) SA Servers\n7) SEA Servers\n')
+    server_picker = input('Please enter your Server Choice: ')
+    if server_picker == '1':
+        server_picker = 86, 203
+        print('You have chosen: NA Servers\n')
+        bot_third_start()
+    elif server_picker == '2':
+        server_picker = 91, 243
+        print('You have chosen: EU Servers\n')
+        bot_third_start()
+    elif server_picker == '3':
+        server_picker = 91, 285
+        print('You have chosen: AS Servers\n')
+        bot_third_start()
+    elif server_picker == '4':
+        server_picker = 86, 326
+        print('You have chosen: KR/JP Servers\n')
+        bot_third_start()
+    elif server_picker == '5':
+        server_picker = 92, 364
+        print('You have chosen: OC Servers\n ')
+        bot_third_start()
+    elif server_picker == '6':
+        server_picker = 92, 403
+        print('You have chosen: SA Servers\n ')
+        bot_third_start()
+    elif server_picker == '7':
+        server_picker = 95, 444
+        print('You have chosen: SEA Servers\n ')
+        bot_third_start()
+    else:
+        print('You put '+'~'+server_picker+'~'+' this is not one of the options\n'+
+              'Please try again in:')
+        short_count_down()
+        clear()
         bot_second_start()
 
 def bot_first_start():
-
     print('Made by: Dustyroo\nVer. 1.12+\ndebug current level is '+'~'+str(debug_me)+'~\n\n'+
           'Screen Resolution Choices are:\n1) 1080p\n2) 1440p\n3) 720p'+
           '\n4) Other/ None of the above fit my Screen')
     resolution_choice = input('Please enter your Resolutin Choice: ')
     if resolution_choice == '1':
-        print('You have chosen: 1) 1080p\n ')
+        print('You have chosen: 1080p\n ')
         bot_second_start()
     elif resolution_choice == '2':
-        print('You have chosen: 2) 1440p\nSorry I have not made a support for this resolution.\n'+
+        print('You have chosen: 1440p\nSorry I have not made a support for this resolution.\n'+
               'Please contant dustyroo if you want this resolution implemented!')
         Stop_Bot()
     elif resolution_choice == '3':
-        print('You have chosen: 3) 720p\nSorry I have not made a support for this resolution.\n'+
+        print('You have chosen: 720p\nSorry I have not made a support for this resolution.\n'+
               'Please contant dustyroo if you want this resolution implemented!')
         Stop_Bot()
     elif resolution_choice == '4':
