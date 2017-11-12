@@ -25,9 +25,10 @@ def Stop_Bot():
 
 def check_if_dead():
     if pyautogui.pixelMatchesColor(1637, 960, (255, 255, 255)) and pyautogui.pixelMatchesColor(1765, 944, (255, 255, 255)) is True:
+        time.sleep(0.5)
         pyautogui.click(1710, 951)
-        time.sleep(1)
-        pyautogui.tripleClick(854, 569)
+        time.sleep(2)
+        pyautogui.click(854, 569)
         time.sleep(5)
         fallback_debug_self_fix()
     fallback_debug_self_fix()
@@ -37,6 +38,7 @@ def end_game_restart():
     global grounded_time
     
     print('Bot done Restarting!')
+    pyautogui.press('escape')
     time.sleep(3)
     if pyautogui.pixelMatchesColor(875, 591, (255, 255, 255)) and pyautogui.pixelMatchesColor(750, 597, (255, 255, 255)) is True:
         pyautogui.click(841, 572)
@@ -52,6 +54,8 @@ def on_land_check():
     global leave_game
     global grounded_time
 
+    if yn_debug == 1:
+        print('You have to wait '+str(leave_game)+' Seconds till the bot leaves the game!')
     print('Landed!')
     leave_game -= grounded_time
     if pyautogui.pixelMatchesColor(1805, 889, (17, 48, 62), tolerance=20) is True or pyautogui.pixelMatchesColor(1805, 889, (20, 55, 72), tolerance=20) is True or pyautogui.pixelMatchesColor(1805, 889, (27, 62, 84), tolerance=20) is True or pyautogui.pixelMatchesColor(1805, 889, (23, 58, 78), tolerance=20) is True:
@@ -64,7 +68,6 @@ def on_land_check():
             time.sleep(0.5)
             pyautogui.keyUp('space')
             time.sleep(0.5)
-        pyautogui.press('escape')
         end_game_restart()
     else:
         time.sleep(3)
@@ -76,7 +79,6 @@ def on_land_check():
             if yn_debug == 1:
                 print('Time left before restart: '+str(i)+' ')
             time.sleep(1)
-        pyautogui.press('escape')
         end_game_restart()
     fallback_debug_self_fix()
 
@@ -106,22 +108,24 @@ def playing_game_check():
     global leave_game
 
     for i in range(1, 1000):
+        
         if yn_debug == 1:
             print('Check to see if you are in a plane! '+str(i)+' ')
+        time.sleep(0.1)
         if pyautogui.pixelMatchesColor(173, 50, (255, 255, 255)) and pyautogui.pixelMatchesColor(167, 47, (255, 255, 255)) is True:
             wait_to_drop = random.randint(1, 32)
             leave_game -= wait_to_drop
             if yn_debug == 1:
+                print('You are in the plane.')
+            if yn_debug == 1:
                 print('the random wait time is '+str(wait_to_drop)+' Seconds.')
             if yn_debug == 1:
-                print('You have to wait '+str(leave_game)+' Seconds till you leave the game!')
-            if yn_debug == 1:
-                print('You are in the plane.')
+                print('You have to wait '+str(leave_game)+' Seconds till the bot leaves the game!')
             time.sleep(23)
             if yn_debug == 1:
                 print('Dropping in '+str(wait_to_drop)+' Secconds.')
             time.sleep(wait_to_drop)
-            print('You have dropped!')
+            print('Bot made you drop!')
             pyautogui.press('f')
             pyautogui.press('f')
             pyautogui.keyDown('w')
@@ -133,11 +137,11 @@ def playing_game_check():
                 print('Bot opened the Parachute!')
             parachute_max_distance()
     if yn_debug == 1:
-        print('can you drop!?')
+        print('Never dropped!?')
     fallback_debug_self_fix()
 
 def second_in_game_check():
-    for i in range(1, 80):
+    for i in range(1, 70):
         if yn_debug == 1:
             print('Times check to see if game started '+str(i)+' seconds')
         time.sleep(1)
@@ -320,7 +324,6 @@ def fallback_debug_self_fix():
             time.sleep(1)
             on_land_check()
         elif pyautogui.pixelMatchesColor(38, 1032, (206, 204, 199), tolerance=30) and pyautogui.pixelMatchesColor(45, 1002, (248, 248, 248), tolerance=30) is True:
-            print('Check Worked!')
             time.sleep(0.5)
             pyautogui.press('z')
             time.sleep(1)
