@@ -45,6 +45,14 @@ Functions I have implemented:
 * Make the bot work
 * Auto Debug+ Self fixing
 * Resolution added 1080p
+## Donate
+
+Donating greatly benefits me and all the time and effort I put into this project.
+
+Time is not free but the bot will always be free!
+
+paypal: paypal.me/Dustyroo
+
 ## Pull requests
 
 You Are welcome, if you have something interesting to add then go ahead and ill add it after approving it.
