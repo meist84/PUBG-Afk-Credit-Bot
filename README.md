@@ -1,4 +1,4 @@
-# PUBG Afk Farming Bot
+# PUBG Afk BP Farming Bot
 
 A really smart Bot for Playerunknown Battlegrounds that AFK farms battlepoints.
 
