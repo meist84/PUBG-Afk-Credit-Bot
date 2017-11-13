@@ -11,7 +11,8 @@ If you cant manually close the bot move your mouse to the TOP left of the screen
 Updating daily! It will work by the end of the day
 
 The bot works in fullscreen windowed mode and fullscreen mode.
-
+![alt text](https://i.imgur.com/5YQc37t.jpg "Screenshot")
+![alt text](https://i.imgur.com/DPDAB0d.png "Screenshot")
 # Working status
 
 Made from scratch by me.
