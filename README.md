@@ -2,6 +2,8 @@
 
 A really smart Bot for Playerunknown Battlegrounds that AFK farms battlepoints.
 
+The bot will never let you be in a group with other people.Also, makes sure you land very far away from anyone so you have the lowest chance of dying.
+
 It has Auto Debug+ Self fixing so dont worry a thing when you run it.
 
 If you cant manually close the bot move your mouse to the TOP left of the screen and wait.
@@ -14,7 +16,7 @@ The bot works in fullscreen windowed mode and fullscreen mode.
 
 Made from scratch by me.
 
-Ver. 1.21+
+Ver. 1.75+
 
 If you see someone repacking it elsewhere it probably isnt safe.
 
@@ -35,13 +37,14 @@ Need anymore assistance add me on Discord @Dustyroo#4303 and PM me.
 ## Check List
 
 I plan to keep updating the bot with new functions:
-* Add a server picker
 * Earn more BP
 * Make a way so you can leave earlier
 * Auto Debug+ Self fixing MORE advanced
 * Add more resolutions
+* Rewrite with a gui, fix and optimize code
 
 Functions I have implemented:
+* Add a server picker
 * Make the bot work
 * Auto float if in water
 * Auto Debug+ Self fixing
