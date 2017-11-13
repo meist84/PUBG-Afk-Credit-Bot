@@ -12,7 +12,7 @@ Updating daily! It will work by the end of the day
 
 The bot works in fullscreen windowed mode and fullscreen mode.
 ![alt text](https://i.imgur.com/5YQc37t.jpg "Screenshot")
-![alt text](https://i.imgur.com/DPDAB0d.png "Screenshot")
+![alt text](https://i.imgur.com/YQqaO4l.png "Screenshot")
 # Working status
 
 Made from scratch by me.
