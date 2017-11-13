@@ -2,7 +2,7 @@
 
 A really smart Bot for Playerunknown Battlegrounds that AFK farms battlepoints.
 
-The bot will never let you be in a group with other people.Also, makes sure you land very far away from anyone so you have the lowest chance of dying.
+The bot will never let you be in a group with other people. Also, makes sure you land very far away from anyone so you have the lowest chance of dying.
 
 It has Auto Debug+ Self fixing so dont worry a thing when you run it.
 
