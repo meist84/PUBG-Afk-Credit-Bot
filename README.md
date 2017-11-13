@@ -41,7 +41,7 @@ I plan to keep updating the bot with new functions:
 * Make a way so you can leave earlier
 * Auto Debug+ Self fixing MORE advanced
 * Add more resolutions
-* Rewrite with a gui, fix and optimize code
+* Rewrite with a gui, fix and optimize code with a config file
 
 Functions I have implemented:
 * Add a server picker
