@@ -8,7 +8,7 @@ It has Auto Debug+ Self fixing so dont worry a thing when you run it.
 
 If you cant manually close the bot move your mouse to the TOP left of the screen and wait.
 
-Updating daily! It will work by the end of the day
+Updating daily!
 
 The bot works in fullscreen windowed mode and fullscreen mode.
 ![alt text](https://i.imgur.com/5YQc37t.jpg "Screenshot")
