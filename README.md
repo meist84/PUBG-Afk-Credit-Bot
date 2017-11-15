@@ -33,7 +33,7 @@ If it keeps debugging and cant self fix make sure you have done the following:
 
 None of the above works, can you please report what happened to Dustyroo? Take screenshots if you can.
 
-Need anymore assistance add me on Discord @Dustyroo#4303 and PM me.
+Need anymore assistance create a issue ticket or add me on Discord @Dustyroo#4303 and PM me.
 
 ## Check List
 
