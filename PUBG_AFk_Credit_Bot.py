@@ -4,7 +4,7 @@ import tkinter
 
 from pyautogui import keyDown, keyUp, press, click, moveTo, pixelMatchesColor, position
 
-tkinter.Pack()
+#tkinter.Pack()
 
 leave_game_time = 233.0
 wait_to_drop = 0.0
